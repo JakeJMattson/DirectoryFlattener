@@ -11,10 +11,9 @@ fun main(args: Array<String>) {
 }
 
 fun processInputFromCLI(input: String) {
-    val wasSuccessful = File(input).flatten()
-    val response = if (wasSuccessful) "Flattening successful" else "Something went wrong."
+    val flattenResponse = File(input).flatten()
 
-    println(response)
+    println(flattenResponse.message)
 }
 
 fun processInputFromGUI() {
@@ -40,10 +39,9 @@ class GUI : View() {
         button {
             text = "Submit"
             setOnAction {
-                val wasFlattened = file?.flatten() ?: false
+                val flattenResponse = file?.flatten()
 
-                if (wasFlattened)
-                    println("File flattened")
+                println(flattenResponse?.message)
             }
         }
     }

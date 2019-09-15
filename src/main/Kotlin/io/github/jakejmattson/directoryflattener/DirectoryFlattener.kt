@@ -4,8 +4,16 @@ import java.io.File
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 
-fun File.flatten(): Boolean {
-    validate()
+data class FlattenResponse(val wasSuccessful: Boolean, val message: String)
+
+private infix fun Boolean.withMessage(message: String) = FlattenResponse(this, message)
+
+fun File.flatten(): FlattenResponse {
+    if (!exists())
+        return false withMessage "A directory with this path does not exist."
+
+    if (!isDirectory)
+        return false withMessage "Input path should be a directory, not a file."
 
     walkDirectories().forEach {
         if (it == this)
@@ -17,12 +25,7 @@ fun File.flatten(): Boolean {
             Files.move(it.toPath(), targetFile.toPath(), StandardCopyOption.ATOMIC_MOVE)
     }
 
-    return true
-}
-
-private fun File.validate() {
-    require(exists()) { "A directory with this path does not exist." }
-    require(isDirectory) { "Input path should be a directory, not a file." }
+    return true withMessage "Flatten Successful"
 }
 
 private fun File.walkDirectories() = walkBottomUp()

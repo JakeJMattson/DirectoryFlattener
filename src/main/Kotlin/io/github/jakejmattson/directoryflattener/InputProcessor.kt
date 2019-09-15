@@ -22,26 +22,31 @@ fun processInputFromGUI() {
 
 class MyApp : App(GUI::class)
 
-class GUI : View() {
+class GUI : View("Directory Flattener") {
     override val root = hbox {
-        var file: File? = null
+        val textInput = textfield {
+            prefWidth = 300.0
+            promptText = "Directory to flatten"
+        }
 
         button {
-            text = "Select the directory to flatten."
+            text = "Select"
 
             setOnAction {
-                file = chooseDirectory {
+                textInput.text = chooseDirectory {
                     title = "Select the directory to flatten."
-                }
+                }?.absolutePath
             }
         }
 
         button {
-            text = "Submit"
-            setOnAction {
-                val flattenResponse = file?.flatten()
+            text = "Flatten"
 
-                println(flattenResponse?.message)
+            setOnAction {
+                val file = File(textInput.text)
+                val flattenResponse = file.flatten()
+
+                println(flattenResponse.message)
             }
         }
     }

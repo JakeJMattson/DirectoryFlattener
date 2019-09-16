@@ -30,10 +30,9 @@ fun File.flatten(): FlattenResponse {
 
 private fun File.walkDirectories() = walkBottomUp()
     .onLeave {
-        if (it.exists())
-            if (it.isDirectory)
-                if (it.listFiles().isEmpty())
-                    it.delete()
+        if (it.exists() && it.isDirectory)
+            if (it.listFiles().isEmpty())
+                it.delete()
     }
     .onFail { file, ioException ->
         println("${ioException.message} - ${file.absolutePath}")

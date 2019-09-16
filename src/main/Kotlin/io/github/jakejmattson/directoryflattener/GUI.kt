@@ -4,23 +4,6 @@ import javafx.scene.control.Alert.AlertType
 import tornadofx.*
 import java.io.File
 
-fun main(args: Array<String>) {
-    if (args.isNotEmpty())
-        processInputFromCLI(args.first())
-    else
-        processInputFromGUI()
-}
-
-fun processInputFromCLI(input: String) {
-    val flattenResponse = File(input).flatten()
-
-    println(flattenResponse.message)
-}
-
-fun processInputFromGUI() {
-    launch<MyApp>()
-}
-
 class MyApp : App(GUI::class)
 
 class GUI : View("Directory Flattener") {

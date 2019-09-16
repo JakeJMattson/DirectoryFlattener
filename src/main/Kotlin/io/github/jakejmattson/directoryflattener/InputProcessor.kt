@@ -1,5 +1,6 @@
 package io.github.jakejmattson.directoryflattener
 
+import javafx.scene.control.Alert.AlertType
 import tornadofx.*
 import java.io.File
 
@@ -35,7 +36,7 @@ class GUI : View("Directory Flattener") {
             setOnAction {
                 textInput.text = chooseDirectory {
                     title = "Select the directory to flatten."
-                }?.absolutePath
+                }?.absolutePath ?: ""
             }
         }
 
@@ -45,8 +46,9 @@ class GUI : View("Directory Flattener") {
             setOnAction {
                 val file = File(textInput.text)
                 val flattenResponse = file.flatten()
+                val alertType = if (flattenResponse.wasSuccessful) AlertType.CONFIRMATION else AlertType.ERROR
 
-                println(flattenResponse.message)
+                alert(alertType, "", flattenResponse.message)
             }
         }
     }

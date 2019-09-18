@@ -9,4 +9,26 @@
 
 # DirectoryFlattener
 
-Extract all files to a root directory, flattening it to one folder worth of files
+<p align="justify">
+This program flattens a directory by extracting all files in all sub-directories into to a single root directory.
+</p>
+
+## Prerequisites
+
+### Languages
+* [Kotlin](https://kotlinlang.org/)
+
+## Getting Started (Software)
+### Installing Java
+<p align="justify">
+Visit the <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Downloads</a> page and select the version of your choice.
+Run the installer and follow the instructions provided.
+</p>
+
+## Building
+This project is built with Maven. To build the `pom.xml`, please follow the import instructions for your IDE.
+* [IntelliJ](https://www.tutorialspoint.com/maven/maven_intellij_idea.htm)
+* [Eclipse](https://www.tutorialspoint.com/maven/maven_eclispe_ide.htm)
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

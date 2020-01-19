@@ -1,4 +1,4 @@
-package io.github.jakejmattson.directoryflattener
+package me.jakejmattson.directoryflattener
 
 import tornadofx.*
 import java.io.File

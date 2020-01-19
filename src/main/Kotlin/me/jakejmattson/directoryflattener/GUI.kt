@@ -1,4 +1,4 @@
-package io.github.jakejmattson.directoryflattener
+package me.jakejmattson.directoryflattener
 
 import javafx.scene.control.Alert.AlertType
 import tornadofx.*
